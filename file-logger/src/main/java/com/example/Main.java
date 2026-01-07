@@ -5,7 +5,7 @@ import java.io.IOException;
 public class Main {
     private static final FileLogger log = FileLogger.getLogger(Main.class);
 
-    private static void logs() {
+    private static void printLogs() {
         // 1. 普通文本
         log.info("Core JAR 已由自定义 ClassLoader 加载");
 
@@ -27,8 +27,11 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        logs();
+        FileLogger.setLogFile("app.log");
 
+        printLogs();
+
+        FileLogger.setLogFile("DemoClass.log");
         DemoClass.print();
     }
 }
