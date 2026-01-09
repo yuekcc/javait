@@ -1,5 +1,7 @@
 package com.example;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
@@ -37,8 +39,8 @@ public class FileLogger {
     /**
      * 动态设置日志文件路径
      */
-    public static void setLogFile(String newPath) {
-        if (newPath == null || newPath.trim().isEmpty()) return;
+    public static synchronized void setLogFile(String newPath) {
+        if (StringUtils.isEmpty(newPath)) return;
         logFilePath = newPath;
     }
 
